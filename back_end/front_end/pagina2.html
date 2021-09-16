@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>descrição</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+
+    <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light " style="background-color: #629cc5;">
+
+        <div class="container-fluid">
+  
+            <a class="navbar-brand h1 mb-0 " href="#"> Cappacita Movies</a>
+  
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSite">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarSite">
+  
+              <ul class="navbar-nav">
+  
+                <li class="nav-item">
+  
+                  <a class="nav-link" href="http://localhost:1525">Início</a>
+  
+                </li>
+  
+              </ul>  
+          </div>
+        </div>
+      </nav>
+
+      <dda ></dda>
+      
+      
+      <script>
+            
+    getContent()
+        
+        async function getContent() {  
+            try {            
+                const response = await fetch('http://localhost:1525/bancoUni') 
+                const ida = await fetch('http://localhost:1525/bancoId')                
+                const data = await response.json()
+                const id = await ida.json()
+                GG(data,id)
+            } catch (error) {                
+                console.log(error)
+            }   
+        } 
+        function GG(data,id) {    
+                let output = `
+                <img src=${data[id.id].imagem} class="" style="margin-top: 80px; margin-left: 42.5%;" alt="404 Not found" width="200" height="350">
+                <div class="text-center" style="margin-left: 50px; margin-right: 50px;" ><h4>${data[id.id].nome}</h4><p>${data[id.id].descricao}</p></div>
+                `
+              
+                document.querySelector('dda').innerHTML = output
+              }
+      </script>
+      
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
